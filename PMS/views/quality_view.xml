@@ -1,0 +1,148 @@
+<odoo>
+    <data>
+        <record id="quality_project_view_form" model="ir.ui.view">
+            <field name="name">Quality Project</field>
+            <field name="model">quality.project</field>
+            <field name="arch" type="xml">
+                <form string="Quality For Proj">
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"
+                               statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h2>
+                                        <field name="name"/>
+                                    </h2>
+                                </div>
+                            </group>
+                            <group></group>
+                            <group>
+                                <field name="date"/>
+                                <field name="project_id"/>
+                            </group>
+                            <group>
+                                <field name="project_manager_id"/>
+                                <field name="customer_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="quality_project_view_tree" model="ir.ui.view">
+            <field name="name">Quality Project</field>
+            <field name="model">quality.project</field>
+            <field name="arch" type="xml">
+                <tree string="Quality for Project">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="project_id"/>
+                    <field name="project_manager_id"/>
+                    <field name="state" widget="statinfo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_quality_project_view">
+            <field name="name">Quality Project</field>
+            <field name="res_model">quality.project</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face" icon="fa-bar-chart-o">
+                    AJAX MEDIA TECH
+                </p>
+                <p>
+                    Create a new Record
+                </p>
+            </field>
+        </record>
+
+        <!--        <menuitem id="main_qaulity" name="Quality" groups="base.group_user"/>-->
+
+        <menuitem id="sub_project_quality" name="Quality Project" parent="sub_folder_watching_pms"
+                  action="action_quality_project_view" sequence="4" groups="base.group_user"/>
+
+
+<!--        FOR TASK QUALITY-->
+        <record id="quality_task_view_form" model="ir.ui.view">
+            <field name="name">Quality Task</field>
+            <field name="model">quality.task</field>
+            <field name="arch" type="xml">
+                <form string="Quality For Task">
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"
+                               statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h2>
+                                        <field name="name"/>
+                                    </h2>
+                                </div>
+                            </group>
+                            <group></group>
+                            <group>
+                                <field name="date"/>
+                                <field name="project_id"/>
+                                <field name="task_id"/>
+                            </group>
+                            <group>
+                                <field name="project_manager_id"/>
+                                <field name="project_technician_id"/>
+                                <field name="customer_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="quality_task_view_tree" model="ir.ui.view">
+            <field name="name">Quality Task</field>
+            <field name="model">quality.task</field>
+            <field name="arch" type="xml">
+                <tree string="Quality for Task">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="project_id"/>
+                    <field name="project_manager_id"/>
+                    <field name="project_technician_id"/>
+                    <field name="state" widget="statinfo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_quality_task_view">
+            <field name="name">Quality Task</field>
+            <field name="res_model">quality.task</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face" icon="fa-bar-chart-o">
+                    AJAX MEDIA TECH
+                </p>
+                <p>
+                    Create a new Record
+                </p>
+            </field>
+        </record>
+
+        <!--        <menuitem id="main_qaulity" name="Quality" groups="base.group_user"/>-->
+
+        <menuitem id="sub_project_task" name="Quality Task" parent="sub_folder_watching_pms"
+                  action="action_quality_task_view" sequence="5" groups="base.group_user"/>
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <record id="folder_watching_view_form" model="ir.ui.view">
+            <field name="name">Folder Watching</field>
+            <field name="model">folder.watching</field>
+            <field name="arch" type="xml">
+                <form string="pms">
+<!--                    <header>-->
+<!--                        <button string="date" name="on_created" type="object"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <h2>
+                                    <field name="date_order"/>
+                                </h2>
+                            </div>
+                            <!--                            <field name="data" style="width:60%%" placeholder="Data"/>-->
+                            <field name="date_order"/>
+                        </group>
+                        <group>
+                            <field name="order_line" string="Folder Watching Lines">
+                                <tree editable="bottom">
+                                    <field name="file_name"/>
+                                    <field name="action"/>
+                                    <field name="date_time"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="folder_watching_view_tree" model="ir.ui.view">
+            <field name="name">Folder Watching</field>
+            <field name="model">folder.watching</field>
+            <field name="arch" type="xml">
+                <tree string="pms_info">
+                    <field name="id" decoration-bf="1"/>
+                    <!--                    <field name="data"/>-->
+                    <field name="date_order"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="seq_nam" model="ir.sequence">-->
+<!--            <field name="name">Folder Watching Sequence</field>-->
+<!--            <field name="code">folder.watching</field>-->
+<!--            <field name="active">TRUE</field>-->
+<!--            <field name="prefix">FWT</field>-->
+<!--            <field name="number_increment">1</field>-->
+<!--            <field name="padding">3</field>-->
+<!--            <field name="implementation">Standard</field>-->
+<!--            <field name="use_date_range">False</field>-->
+<!--        </record>-->
+
+        <record model="ir.actions.act_window" id="action_view_folder_watching_pms">
+            <field name="name">Folder Watching</field>
+            <field name="res_model">folder.watching</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+        id="root_pms"
+        name="Folder Watching"
+        web_icon="PMS,static/description/icon.png"
+        sequence="0"
+        groups="base.group_user"/>
+
+        <menuitem 
+        id="main_folder_watching_pms" 
+        name="Folder Watching" 
+        parent="root_pms"
+        groups="base.group_user"/>
+
+        <menuitem 
+        id="sub_folder_watching_pms" 
+        name="Folder Watching" 
+        parent="main_folder_watching_pms"
+        action="action_view_folder_watching_pms" 
+        sequence="1" 
+        groups="base.group_user" />
+    </data>
+</odoo>
